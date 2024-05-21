@@ -240,28 +240,6 @@ class MultiDecay(torch.nn.Module):
         super().__init__()
         blocks = []
         decay_cls = Decay if config.n_mem_dim == 1 else Decay2DBlk
-        # for d in config.decays:
-        #     blocks += [
-        #         ResidBranch(
-        #             config.n_embed, 
-        #             config.dropout,
-        #             Decay(
-        #                 config.n_embed, 
-        #                 config.n_mem, 
-        #                 config.n_embed,
-        #                 d
-        #             )
-        #         ),
-        #         ResidBranch(
-        #             config.n_embed, 
-        #             config.dropout,
-        #             FeedForward(
-        #                 config.n_embed, 
-        #                 config.n_mlp, 
-        #                 config.n_embed,
-        #             )
-        #         )
-        #     ]
         blocks = [
             ResidBranch(
                 config.n_embed, 
